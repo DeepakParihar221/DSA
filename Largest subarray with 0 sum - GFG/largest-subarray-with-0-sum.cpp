@@ -14,8 +14,7 @@ class Solution{
     {   
         // Your code here
         map<int, int> m;
-        int maxm = 0;
-        int sum = 0;
+        int maxm = 0, sum = 0;
         for(int i=0;i<n;i++){
             sum += nums[i];
             if(sum==0){
@@ -30,7 +29,6 @@ class Solution{
                 }
             }
         }
-        
         return maxm;
     }
 };
