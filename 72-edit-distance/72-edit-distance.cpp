@@ -11,7 +11,7 @@ public:
         if(dp[n][m]!=-1) return dp[n][m];
         
         if(word1[n]==word2[m]){
-            return solve(word1, word2, n-1, m-1, dp);
+            return dp[n][m] = solve(word1, word2, n-1, m-1, dp);
         }
         
         int insert = solve(word1, word2, n, m-1, dp);
