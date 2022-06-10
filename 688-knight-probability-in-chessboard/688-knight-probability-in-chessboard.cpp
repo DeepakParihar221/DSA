@@ -10,8 +10,14 @@ public:
         }
         if(dp[i][j][k]!=0) return dp[i][j][k];
         double val = 0;
-        val += solve(i+2, j-1, n, k-1, dp) + solve(i+2, j+1, n, k-1, dp) + solve(i-2, j-1, n, k-1, dp) + solve(i-2, j+1, n, k-1, dp) + solve(i+1, j+2, n, k-1, dp) + solve(i-1, j+2, n, k-1, dp) + solve(i+1, j-2, n, k-1, dp) + solve(i-1, j-2, n, k-1, dp);
-        
+        val += solve(i+2, j-1, n, k-1, dp);
+        val += solve(i+2, j+1, n, k-1, dp);
+        val += solve(i-2, j-1, n, k-1, dp);
+        val += solve(i-2, j+1, n, k-1, dp);
+        val += solve(i+1, j+2, n, k-1, dp);
+        val += solve(i-1, j+2, n, k-1, dp);
+        val += solve(i+1, j-2, n, k-1, dp);
+        val += solve(i-1, j-2, n, k-1, dp);
         val /= 8;
         return dp[i][j][k] = val;
     }
