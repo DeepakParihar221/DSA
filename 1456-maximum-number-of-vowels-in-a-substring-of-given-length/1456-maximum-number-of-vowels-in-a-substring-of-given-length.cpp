@@ -13,9 +13,6 @@ public:
                 maxm = max(maxm, vowel);
                 j++;
             }
-            // else if(j-i+1==k){
-            //     maxm = max(maxm, vowel);
-            // }
             else{
                 if(s[i]=='a'||s[i]=='e'||s[i]=='i'||s[i]=='o'||s[i]=='u'){
                     vowel--;
