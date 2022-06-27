@@ -8,7 +8,6 @@ public:
         while(i<n && j<m){
             int start = max(firstlist[i][0], secondlist[j][0]);
             int end = min(firstlist[i][1], secondlist[j][1]);
-            vector<int> temp = {start, end};
             if(secondlist[j][1]>firstlist[i][1]) i++;
             else if(firstlist[i][1]>secondlist[j][1]) j++;
             else{
@@ -16,7 +15,7 @@ public:
                 j++;
             }
             if(end>=start)
-            ans.push_back(temp);
+            ans.push_back({start, end});
         }
         
         return ans;
