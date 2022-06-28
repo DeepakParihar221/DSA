@@ -18,12 +18,16 @@ public:
             }
             
         }
-        vector<int> ans;
-        while(!st.empty()){
-            ans.push_back(st.top());
+        vector<int> ans(st.size());
+        for(int i=st.size()-1;i>=0;i--){
+            ans[i] = st.top();
             st.pop();
         }
-        reverse(ans.begin(), ans.end());
+        // while(!st.empty()){
+        //     ans.push_back(st.top());
+        //     st.pop();
+        // }
+        // reverse(ans.begin(), ans.end());
         
         return ans;
     }
