@@ -10,31 +10,27 @@ using namespace std;
 
 class Solution{
     public:
-    vector<string> ans;
-    void solve(vector<vector<int>> &m, int row, int col, int n, vector<vector<int>> &visited, string dir, string temp){
-        if(row<0 || col<0 || col==n || row==n || m[row][col]==0 || visited[row][col]==1)
-        return;
-        if(row==n-1 && col==n-1){
-            ans.push_back(temp);
+    void solve(vector<vector<int>> &grid, int i, int j, string s, vector<string> &ans, vector<vector<int>> &visited){
+        if(i<0 || j<0 || i>=grid.size() || j>=grid[0].size() || grid[i][j]==0 || visited[i][j]==1){
             return;
         }
-        
-        
-        visited[row][col] = 1;
-        solve(m, row+1, col, n, visited, dir, temp+"D");
-        solve(m, row, col-1, n, visited, dir, temp+"L");
-        solve(m, row, col+1, n, visited, dir, temp+"R");
-        solve(m, row-1, col, n, visited, dir, temp+"U");
-        visited[row][col] = 0;
-        return;
+        if(i==grid.size()-1 && j==grid[0].size()-1){
+            ans.push_back(s);
+            return;
+        }
+        visited[i][j] = 1;
+        solve(grid, i+1, j, s+"D", ans, visited);
+        solve(grid, i-1, j, s+"U", ans, visited);
+        solve(grid, i, j+1, s+"R", ans, visited);
+        solve(grid, i, j-1, s+"L", ans, visited);
+        visited[i][j] = 0;
     }
-    vector<string> findPath(vector<vector<int>> &m, int n) {
+    vector<string> findPath(vector<vector<int>> &grid, int n) {
         // Your code goes here
-        if(m[0][0]==0) return ans;
+        string s = "";
+        vector<string> ans;
         vector<vector<int>> visited(n, vector<int>(n, 0));
-        string dir = "DLRU";
-        string temp = "";
-        solve(m, 0, 0, n, visited, dir, temp);
+        solve(grid, 0, 0, s, ans, visited);
         return ans;
     }
 };
